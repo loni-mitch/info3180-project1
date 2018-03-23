@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profiles.css') }}">
+
+{% endblock %}
+
+{% block main %}
+
+{% for new_profile in profile_list %}
+<div class = "box">
+	<div class = "info">
+		<div class = "row">
+			<div class = "col-md-4">
+				<img src="{{ url_for('static',filename="uploads/"+ new_profile.photo) }}" alt="Picture of User", width = 70px>
+           </div>
+			<div class = "col-md-4 ">
+				<h4> {{ new_profile.first_name }} {{ new_profile.last_name }} </h4>
+			<p> {{ new_profile.gender }}</p>
+			<p> {{ new_profile.location }} </p>
+		   </div>
+		   
+			<div class = "col-md-4 button" >
+				<a href="/profile/{{ new_profile.userid }}"  class="btn btn-success" >View Profile</a> </div>
+			
+		</div>
+		
+    	
+			
+	</div>	
+
+
+
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
